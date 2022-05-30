@@ -16,7 +16,7 @@ import type {DraftInlineStyle} from 'DraftInlineStyle';
 import type {InlineStyleRange} from 'InlineStyleRange';
 import type {List} from 'immutable';
 
-const UnicodeUtils = require('UnicodeUtils');
+// const UnicodeUtils = require('UnicodeUtils');
 
 const findRangesImmutable = require('findRangesImmutable');
 
@@ -48,8 +48,10 @@ function getEncodedInlinesForType(
     (start, end) => {
       const text = block.getText();
       ranges.push({
-        offset: UnicodeUtils.strlen(text.slice(0, start)),
-        length: UnicodeUtils.strlen(text.slice(start, end)),
+        // offset: UnicodeUtils.strlen(text.slice(0, start)),
+        // length: UnicodeUtils.strlen(text.slice(start, end)),
+        offset: text.slice(0, start).length,
+        length: text.slice(start, end).length,
         style: styleToEncode,
       });
     },
